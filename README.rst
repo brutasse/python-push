@@ -17,22 +17,27 @@ Publishing
 
 Publishing some content is as easy as:
 
-* Declaring a hub in an RSS/Atom feed::
+Declaring a hub
+```````````````
 
-  <?xml version="1.0"?>
-  <atom:feed>
-    <link rel="hub" href="http://hub.example.com/endpoint" />
+This is done in your RSS/Atom feed::
 
+    <?xml version="1.0"?>
+    <atom:feed>
+      <link rel="hub" href="http://hub.example.com/endpoint" />
     …
 
-* Pinging that hub whenever the content is updated::
+Pinging the hub
+```````````````
 
-  from push.pub import ping_hub, PingError
+Whenever the content is updated, issue a ping request to the hub you use::
 
-  try:
-      ping_hub(topic_url, hub_url)
-  except PingError as e:
-      print "Error while pinging hub, more info available in e.response
+    from push.pub import ping_hub, PingError
+
+    try:
+        ping_hub(topic_url, hub_url)
+    except PingError as e:
+        print "Error while pinging hub, more info available in e.response
 
 Subscribing
 -----------
